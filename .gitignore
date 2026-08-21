@@ -1,0 +1,26 @@
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+
+# Unit test / coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+coverage.xml
+.ruff_cache/
+
+# Environments
+venv/
+.venv/
+.env
+
+# PyCharm
+.idea/
+
+# Misc
+notes.md
