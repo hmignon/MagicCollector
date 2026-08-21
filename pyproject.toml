@@ -1,0 +1,51 @@
+[tool.isort]
+profile = "black"
+
+[tool.ruff]
+line-length = 88
+indent-width = 4
+exclude = [
+    ".github",
+    ".ruff_cache",
+    "venv",
+    "tasks.py",
+    "__init__.py",
+    "**/migrations/*.py"
+]
+
+[tool.ruff.lint]
+select = [
+    "A",
+    "B",
+    "C4",
+    "DJ",
+    "DTZ",
+    "E",
+    "EXE",
+    "F",
+    "I",
+    "ICN",
+    "ISC",
+    "INT",
+    "N",
+    "PIE",
+    "PTH",
+    "PL",
+    "RET",
+    "RUF",
+    "SIM",
+    "TCH",
+    "T10",
+    "UP",
+    "W",
+    "YTT"
+]
+ignore = [
+    "SIM105",
+    "PLR0911",
+    "PLR0912",
+    "PLR0913",
+    "PLR0915",
+    "PLR0916",
+    "PLR2004"
+]
