@@ -1,14 +1,23 @@
 [run]
+branch = True
 source = .
 omit =
     */migrations/*
     */tests/*
     */test_*.py
+    */__init__.py
+    */asgi.py
+    */wsgi.py
     manage.py
-    */venv/*
-    */.venv/*
+    */settings/*
+    */settings.py
 
 [report]
 exclude_also =
     pragma: no cover
     if TYPE_CHECKING:
+    raise NotImplementedError
+
+ignore_errors = True
+show_missing = True
+skip_covered = False
