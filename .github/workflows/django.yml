@@ -4,7 +4,6 @@ on: push
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -59,16 +58,15 @@ jobs:
           parallel: true
           flag-name: python-${{ matrix.python-version }}
 
-    finish:
-      needs: test
-      if: ${{ always() }}
-      runs-on: ubuntu-latest
-
-      steps:
-        - name: Coveralls finished
-          uses: coverallsapp/github-action@v2
-          with:
-            github-token: ${{ secrets.GITHUB_TOKEN }}
-            parallel-finished: true
+  finish:
+    needs: test
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Coveralls finished
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel-finished: true
           
       
