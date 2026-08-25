@@ -3,7 +3,7 @@ name: Django CI
 on: push
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
     strategy:
@@ -50,11 +50,25 @@ jobs:
           coverage xml
           coverage report
 
-      - name: Upload coverage to Coveralls
+      - name: Coveralls parallel
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           file: coverage.xml
           format: cobertura
+          parallel: true
+          flag-name: python-${{ matrix.python-version }}
+
+    finish:
+      needs: test
+      if: ${{ always() }}
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Coveralls finished
+          uses: coverallsapp/github-action@v2
+          with:
+            github-token: ${{ secrets.GITHUB_TOKEN }}
+            parallel-finished: true
           
       
