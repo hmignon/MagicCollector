@@ -90,10 +90,16 @@ class Card(models.Model):
     border_color = models.CharField(
         _("border color"), choices=BorderColor.choices, max_length=10
     )
-    # Multiple choice fields
-    available_finishes = models.CharField(_("available finishes"))
-    available_frame_effects = models.CharField(_("available frame effects"))
-    available_languages = models.CharField(_("available languages"))
+    # Multiple choice fields (separated by commas)
+    available_finishes = models.CharField(
+        _("available finishes"), max_length=100, blank=True, default=""
+    )
+    available_frame_effects = models.CharField(
+        _("available frame effects"), max_length=100, blank=True, default=""
+    )
+    available_languages = models.CharField(
+        _("available languages"), max_length=100, blank=True, default=""
+    )
 
     front_meta = models.JSONField(_("front meta"), default=dict)
     back_meta = models.JSONField(
