@@ -2,6 +2,7 @@ asgiref==3.12.1
 black==26.5.1
 click==8.4.2
 colorama==0.4.6
+coverage==7.15.4
 Django==6.1
 django-stubs==6.1.0
 django-stubs-ext==6.1.0

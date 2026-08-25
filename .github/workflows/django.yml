@@ -44,6 +44,17 @@ jobs:
           echo ">>> Django migrations"
           python manage.py makemigrations --check --dry-run
 
-      - name: Tests
+      - name: Tests and coverage
         run: |
-          python manage.py test
+          coverage run --source='.' manage.py test
+          coverage xml
+          coverage report
+
+      - name: Upload coverage to Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          file: coverage.xml
+          format: cobertura
+          
+      

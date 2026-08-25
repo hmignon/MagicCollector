@@ -42,6 +42,13 @@ def test_fail(c):
     c.run("python manage.py test --failfast")
 
 
+@task(name="coverage", aliases=["cov"])
+def coverage(c):
+    c.run("coverage run --source='.' manage.py test")
+    c.run("coverage report")
+    c.run("coverage html")
+
+
 @task(name="runserver", aliases=["rs"])
 def run(c):
     c.run("python manage.py migrate")
